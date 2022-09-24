@@ -1,6 +1,122 @@
 :root {
-    --brand-color: #FFCA27;
-    --dark-color: #155E75;
-    --mid-color: #E5E7EB;
-    --light-color: #F8FAFC;
- }
+  --brand-color: #ffca27;
+  --dark-color: #155e75;
+  --mid-color: #e5e7eb;
+  --light-color: #f8fafc;
+
+  /* some grey shades */
+  --grey-color: #808080;
+  --slate-grey: #708090;
+  --light-slate: #778899;
+  --silver: #c0c0c0;
+  --gainsboro: #dcdcdc;
+  --light-grey: #d3d3d3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-areas: "header", "main";
+  grid-template-rows: 80px calc(100vh - 80px);
+}
+
+header {
+  padding: 10px;
+}
+
+main {
+  min-width: 100%;
+  padding: 0 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome{
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    background-color: var(--brand-color);
+    color: white;
+}
+.welcome .fa-close{
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    cursor: pointer;
+}
+.welcome .fa-close:hover{
+    color: red;
+}
+.welcome p{
+    text-align: center;
+    padding: 2.5rem 0;
+    font-size: larger;
+}
+
+.flashcards-section{
+    margin-top: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.btn{
+    margin: 1rem auto;
+    padding: 10px 15px;
+    border-radius: 25px;
+    color: white;
+    background-color: var(--dark-color);
+}
+.btn:hover{
+    background-color: var(--light-slate);
+}
+.contain-flashcards{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    padding-top: 8px;
+}
+
+.flashcard{
+    width: 30rem;
+    border: 2px solid red;
+    padding: 10px;
+    margin: 10px;
+}
+.card-face{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.tag{
+    font-size: 10px;
+    font-weight: lighter;
+    background-color: #778899;
+    border-radius: 10px;
+    padding: 3px 4px;
+    width: max-content;
+    color: white;
+}
+.card-content{
+    text-align: center;
+    padding: 5px;
+}
+
+.actions{
+    display: flex;
+    justify-content: flex-end;
+}
+.actions .fa{
+    cursor: pointer;
+}
+
