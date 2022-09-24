@@ -1,59 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
 
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>Flashcard app</title>
+  <title>Flashcard app</title>
 </head>
 <body>
-    <header>
-        <!-- insert logo here -->
-        <img src="" alt="flashcard logo">
-    </header>
-    <main>
-        <!-- welcome -->
-        <section class="welcome">
-            <i class="fa fa-close"></i>
-            <p>Welcome to <span>Flashcard</span>!</p>
-        </section>
+  <header>
+    <!-- insert logo here -->
+    <img src="" alt="flashcard logo">
+  </header>
+  <main>
+    <!-- welcome -->
+    <section class="welcome">
+      <i class="fa fa-close"></i>
+      <p>Welcome to <span>Flashcard</span>!</p>
+    </section>
 
-        <section class="flashcards-section">
-            <h1>My flashcards</h1>
-            <button class="btn button">
-                <i class="fa fa-plus"></i>
-                Add a flashcard
-            </button>
-            <div class="contain-flashcards">
-                <p>No flashcards here...</p>
+    <!-- flashcards section -->
+    <section class="flashcards-section">
+      <h1>My flashcards</h1>
+      <button class="btn button">
+        <i class="fa fa-plus"></i>
+        Add a flashcard
+      </button>
+      <div class="contain-flashcards">
+        <p>No flashcards here...</p>
 
+        <!-- flashcard sample -->
+        <div class="flashcard">
+          <div class="card-face">
+            <p class="tag">Question</p>
+            <p class="card-content">What is web development?</p>
+          </div>
+          <div class="card-face">
+            <button class="tag button">Answer <i class="fa fa-chevron-down"></i></button>
+            <p class="card-content">Web development is Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, qui.</p>
+          </div>
+          <div class="actions">
+            <i class="fa fa-edit"></i>
+            <i class="fa fa-trash"></i>
+          </div>
+        </div>
 
-                <!-- flashcard -->
-                <div class="flashcard">
-                    <div class="card-face">
-                        <p class="tag">Question</p>
-                        <p class="card-content">What is web development?</p>
-                    </div>
-                    <div class="card-face">
-                        <button class="tag button">Answer <i class="fa fa-chevron-down"></i></button>
-                        <p class="card-content">Web development is Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, qui.</p>
-                    </div>
-                    <div class="actions">
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash"></i>
-                    </div>
-                </div>
-
-                
-            </div>
-        </section>
-        
-    </main>
-    <script src="/app.js"></script>
+      </div>
+    </section>
+      
+  </main>
+  <script src="/app.js"></script>
 </body>
 </html>
