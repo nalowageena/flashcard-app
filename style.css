@@ -47,6 +47,7 @@ main {
     position: absolute;
     right: 12px;
     top: 12px;
+    cursor: pointer;
 }
 .welcome .fa-close:hover{
     color: red;
@@ -63,14 +64,17 @@ main {
     display: flex;
     flex-direction: column;
 }
+.button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
 .btn{
     margin: 1rem auto;
     padding: 10px 15px;
     border-radius: 25px;
     color: white;
     background-color: var(--dark-color);
-    border: none;
-    outline: none;
 }
 .btn:hover{
     background-color: var(--light-slate);
@@ -81,5 +85,38 @@ main {
     flex: 1;
     align-items: center;
     padding-top: 8px;
+}
+
+.flashcard{
+    width: 30rem;
+    border: 2px solid red;
+    padding: 10px;
+    margin: 10px;
+}
+.card-face{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.tag{
+    font-size: 10px;
+    font-weight: lighter;
+    background-color: #778899;
+    border-radius: 10px;
+    padding: 3px 4px;
+    width: max-content;
+    color: white;
+}
+.card-content{
+    text-align: center;
+    padding: 5px;
+}
+
+.actions{
+    display: flex;
+    justify-content: flex-end;
+}
+.actions .fa{
+    cursor: pointer;
 }
 
