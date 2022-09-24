@@ -42,11 +42,14 @@ main {
     width: 100%;
     background-color: var(--brand-color);
     color: white;
+    opacity: 1;
+    transition: opacity 0.4s;
 }
 .welcome .fa-close{
     position: absolute;
     right: 12px;
     top: 12px;
+    transition: 0.4s;
     cursor: pointer;
 }
 .welcome .fa-close:hover{
@@ -119,4 +122,5 @@ main {
 .actions .fa{
     cursor: pointer;
 }
+
 
