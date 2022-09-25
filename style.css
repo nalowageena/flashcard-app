@@ -72,12 +72,15 @@ main {
     font-weight: 700;
     font-size: 1.5rem;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    opacity: 1;
+    transition: opacity 0.4s;
 }
 
 .welcome .fa-close {
     position: absolute;
     right: 12px;
     top: 12px;
+    transition: 0.4s;
     cursor: pointer;
     font-size: 1.2rem;
 }
