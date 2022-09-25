@@ -27,101 +27,172 @@ font-family: 'Roboto Mono', monospace; */
 body {
   display: grid;
   grid-template-areas: "header", "main";
-  grid-template-rows: 80px calc(100vh - 80px);
+  grid-template-rows: 6rem calc(100vh - 6rem);
+  gap: 1rem;
+  background-color: var(--mid-color);
+  padding: 0 1.5rem;
 }
 
+/* HEADER */
 header {
-  padding: 10px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
+#logo {
+  fill: var(--dark-color);
+  width: 4.5rem;
+}
+
+#logo-title {
+  font-family: 'Roboto Mono', monospace;
+  color: var(--dark-color);
+  font-size: 2.8rem;
+  font-weight: 600;
+}
+
+/* MAIN */
 main {
   min-width: 100%;
-  padding: 0 4rem;
+  padding: 0 6rem;
   display: flex;
   flex-direction: column;
 }
 
-.welcome{
+/* Welcome Section */
+.welcome {
     position: relative;
-    padding: 20px;
+    padding: 1.25rem;
     width: 100%;
     background-color: var(--brand-color);
-    color: white;
+    color: black;
+    font-family: 'Epilogue', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
-.welcome .fa-close{
+
+.welcome .fa-close {
     position: absolute;
     right: 12px;
     top: 12px;
     cursor: pointer;
+    font-size: 1.2rem;
 }
-.welcome .fa-close:hover{
+
+.welcome .fa-close:hover {
     color: red;
 }
-.welcome p{
+
+.welcome p {
     text-align: center;
     padding: 2.5rem 0;
     font-size: larger;
 }
 
-.flashcards-section{
+/* Flashcards Section */
+.flashcards-section {
     margin-top: 2rem;
     flex: 1;
     display: flex;
     flex-direction: column;
+    font-family: 'Epilogue', sans-serif;
 }
-.button{
+
+.flashcards-section h1 {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 2rem;
+  color: var(--dark-color);
+}
+
+.button {
     border: none;
     outline: none;
     cursor: pointer;
 }
-.btn{
-    margin: 1rem auto;
-    padding: 10px 15px;
-    border-radius: 25px;
+
+.btn {
+    margin: 1.5rem auto;
+    padding: .8rem 1.5rem;
+    border-radius: 1.5rem;
     color: white;
     background-color: var(--dark-color);
-}
-.btn:hover{
-    background-color: var(--light-slate);
-}
-.contain-flashcards{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    align-items: center;
-    padding-top: 8px;
+    font-size: 1rem;
 }
 
-.flashcard{
-    width: 30rem;
-    border: 2px solid red;
-    padding: 10px;
-    margin: 10px;
+.btn:hover {
+    background-color: var(--light-slate);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
-.card-face{
+
+/* Contain Flashcards Section */
+.contain-flashcards {
+    /* display: flex;
+    flex-direction: column;
+    flex: 1; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: .8rem 0;
+    /* border: solid 3px black; */
+}
+
+.contain-flashcards > p {
+  display: none;
+}
+
+/* Flashcard */
+.flashcard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.2rem;
+  background-color: var(--brand-color);
+  padding: 1.5rem;
+  border-radius: .8rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.card-face {
     display: flex;
     flex-direction: column;
-    padding: 5px;
+    gap: .5rem;
 }
-.tag{
-    font-size: 10px;
-    font-weight: lighter;
-    background-color: #778899;
-    border-radius: 10px;
-    padding: 3px 4px;
+
+.tag {
+    font-size: .65rem;
+    background-color: var(--dark-color);
+    border-radius: 1rem;
+    padding: .4rem .8rem;
     width: max-content;
     color: white;
 }
-.card-content{
+
+.card-content {
     text-align: center;
-    padding: 5px;
+    padding: .3rem;
 }
 
-.actions{
+.actions {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    gap: .5rem;
+    font-size: 1.2rem;
 }
-.actions .fa{
+
+.actions .fa {
     cursor: pointer;
 }
 
+.actions .fa-edit:hover {
+  color: var(--dark-color);
+}
+
+.actions .fa-trash:hover {
+  color: red;
+}
