@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue&family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Mono&display=swap');
 
-/* font-family: 'Epilogue', sans-serif;
+/* font-family: 'Poppins', sans-serif;
 font-family: 'Roboto Mono', monospace; */
 
 :root {
@@ -8,6 +8,7 @@ font-family: 'Roboto Mono', monospace; */
   --dark-color: #155e75;
   --mid-color: #e5e7eb;
   --light-color: #f8fafc;
+  --overlay-color: #00000088;
 
   /* some grey shades */
   --grey-color: #808080;
@@ -16,6 +17,9 @@ font-family: 'Roboto Mono', monospace; */
   --silver: #c0c0c0;
   --gainsboro: #dcdcdc;
   --light-grey: #d3d3d3;
+
+  /* card shadow */
+  --card-shadow : rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 * {
@@ -27,7 +31,7 @@ font-family: 'Roboto Mono', monospace; */
 body {
   display: grid;
   grid-template-areas: "header", "main";
-  grid-template-rows: 6rem calc(100vh - 6rem);
+  grid-template-rows: 5rem calc(100vh - 5rem);
   gap: 1rem;
   background-color: var(--mid-color);
   padding: 0 1.5rem;
@@ -49,7 +53,7 @@ header {
 #logo-title {
   font-family: 'Roboto Mono', monospace;
   color: var(--dark-color);
-  font-size: 2.8rem;
+  font-size: 3.2rem;
   font-weight: 600;
 }
 
@@ -63,133 +67,140 @@ main {
 
 /* Welcome Section */
 .welcome {
-    position: relative;
-    padding: 1.25rem;
-    margin-bottom: 2rem;
-    width: 100%;
-    background-color: var(--brand-color);
-    color: black;
-    font-family: 'Epilogue', sans-serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    opacity: 1;
-    transition: opacity 0.4s;
+  position: relative;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  background-color: var(--brand-color);
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  box-shadow: var(--card-shadow);
+  opacity: 1;
+  transition: opacity 0.4s;
 }
 
 .welcome .fa-close {
-    position: absolute;
-    right: 12px;
-    top: 12px;
-    transition: 0.4s;
-    cursor: pointer;
-    font-size: 1.2rem;
+  position: absolute;
+  right: .6rem;
+  top: .6rem;
+  transition: 0.4s;
+  cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .welcome .fa-close:hover {
-    color: red;
+  color: red;
 }
 
 .welcome p {
-    text-align: center;
-    padding: 2.5rem 0;
-    font-size: larger;
+  text-align: center;
+  padding: 2.5rem 0;
+  font-size: larger;
 }
 
 /* Flashcards Section */
 .flashcards-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Epilogue', sans-serif;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
 }
 
 .flashcards-section h1 {
   font-family: 'Roboto Mono', monospace;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: var(--dark-color);
+  text-align: center;
 }
 
 .button {
-    border: none;
-    outline: none;
-    cursor: pointer;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
 }
 
 .btn {
-    margin: 1.5rem auto;
-    padding: .8rem 1.5rem;
-    border-radius: 1.5rem;
-    color: white;
-    background-color: var(--dark-color);
-    font-size: 1rem;
+  margin: 1.5rem auto;
+  padding: .8rem 1.5rem;
+  border-radius: 1.5rem;
+  color: white;
+  background-color: var(--dark-color);
+  font-size: 1rem;
 }
 
 .btn:hover {
-    background-color: var(--light-slate);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background-color: var(--light-slate);
+  box-shadow: var(--card-shadow);
 }
 
 /* Contain Flashcards Section */
 .contain-flashcards {
-    /* display: flex;
-    flex-direction: column;
-    flex: 1; */
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    padding: .8rem 0;
-    /* border: solid 3px black; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: .8rem 0;
 }
 
 .contain-flashcards > p {
-  display: none;
+  display: block;
+  grid-column: 1 / span 2;
+  text-align: center;
+  margin: 2rem 0;
+  color: var(--light-slate);
+  font-size: 1.8rem;
 }
 
 /* Flashcard */
 .flashcard {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   gap: 1.2rem;
   background-color: var(--brand-color);
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 1.2rem 1.5rem;
   border-radius: .8rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: var(--card-shadow);
 }
 
 .card-face {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 }
 
 .tag {
-    font-size: .65rem;
-    background-color: var(--dark-color);
-    border-radius: 1rem;
-    padding: .4rem .8rem;
-    width: max-content;
-    color: white;
+  font-size: .65rem;
+  background-color: var(--dark-color);
+  border-radius: 1rem;
+  padding: .4rem .8rem;
+  width: max-content;
+  color: white;
 }
 
 .card-content {
-    text-align: center;
-    padding: .3rem;
+  text-align: center;
+  padding: .3rem;
 }
 
 .actions {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: .5rem;
-    font-size: 1.2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: .5rem;
+  font-size: 1.2rem;
 }
 
 .actions .fa {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+.actions .fa-edit {
+  padding-top: .125rem;
 }
 
 .actions .fa-edit:hover {
@@ -198,4 +209,96 @@ main {
 
 .actions .fa-trash:hover {
   color: red;
+}
+
+/* Card Creation Modal */
+#card-creation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--overlay-color);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+#card-creation-form {
+  position: relative;
+  background-color: var(--brand-color);
+  padding: 1.2rem 1.8rem;
+  width: 28rem;
+  border-radius: .8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+#card-creation-form .fa-close {
+  position: absolute;
+  right: .6rem;
+  top: .6rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+#card-creation-form .fa-close:hover {
+  color: red;
+}
+
+#card-creation-form > h2 {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+#card-creation-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-section > label {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.form-section textarea {
+  border: solid 2px var(--grey-color);
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--mid-color);
+  padding: 2px 5px;
+  font-size: .9rem;
+}
+
+.form-section textarea:focus {
+  outline: none;
+}
+
+.form-section textarea#question {
+  height: 6rem;
+}
+
+.form-section textarea#answer {
+  height: 10rem;
+}
+
+#card-creation-form form #form-button {
+  background-color: var(--dark-color);
+  color: white;
+  padding: .6rem 2.5rem;
+  font-size: 1rem;
+  margin: .8rem 0;
+}
+
+#card-creation-form form #form-button:hover {
+  background-color: var(--light-slate);
+  box-shadow: var(--card-shadow);
 }

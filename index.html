@@ -27,7 +27,7 @@
     <!-- flashcards section -->
     <section class="flashcards-section">
       <h1>My flashcards</h1>
-      <button class="btn button">
+      <button id="add-flashcard-btn" class="btn button">
         <i class="fa fa-plus"></i>
         Add a flashcard
       </button>
@@ -66,6 +66,31 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- card creation modal -->
+    <section id="card-creation-modal">
+      <div id="card-creation-form">
+        <i id="modal-close-btn" class="fa fa-close"></i>
+        <h2>Create Flashcard</h2>
+        <form>
+          <div class="form-section">
+            <label for="question">Question</label>
+            <textarea name="question" id="question" cols="30" rows="10" placeholder="Enter the question..."></textarea>
+          </div>
+          <div class="form-section">
+            <label for="answer">Answer</label>
+            <textarea name="answer" id="answer" cols="30" rows="10" placeholder="Enter the answer..."></textarea>
+          </div>
+
+          <!-- form button -->
+          <div>
+            <button id="form-button" class="button">
+              Add Flashcard
+            </button>
+          </div>
+        </form>
       </div>
     </section>
       
