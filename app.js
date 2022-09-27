@@ -8,6 +8,8 @@ const cardCreationModal = document.querySelector("#card-creation-modal");
 const cardCreationForm = document.querySelector("#card-creation-form");
 const modalCloseBtn = document.querySelector("#modal-close-btn");
 const cardForm = document.forms[0];
+const flashcardContainer = document.querySelector("#contain-flashcards");
+const noFlashcardMsg = document.querySelector("#contain-flashcards > p");
 
 const flashcardArray = [];
 
@@ -49,7 +51,7 @@ function submitData(event) {
 }
 
 // if any input field is left empty displays an error
-function formValidation(cardData) {
+function validateForm(cardData) {
   if (cardData.question == "" || cardData.answer == "") {
     console.log("Error, invalid input");
     return false;
@@ -59,9 +61,43 @@ function formValidation(cardData) {
 
 // add card data to flashcard array then close the modal
 function saveCard(cardData) {
-  if (formValidation(cardData)) flashcardArray.push(cardData);
+  if (validateForm(cardData)) flashcardArray.push(cardData);
   console.log(flashcardArray);
   closeCardCreationModal()
+  displayFlashcard();
+}
+
+// append flashcard to flashcard container
+function appendFlashcard() {
+  flashcardArray.forEach(flashcard => {
+    const card = document.createElement('div');
+    card.className = 'flashcard';
+    const html = 
+    `<div class="card-face">
+      <p class="tag">Question</p>
+      <p class="card-content">${flashcard.question}</p>
+    </div>
+    <div class="card-face">
+      <button class="tag button">Answer <i class="fa fa-chevron-down"></i></button>
+      <p class="card-content">${flashcard.answer}</p>
+    </div>
+    <div class="actions">
+      <i class="fa fa-edit"></i>
+      <i class="fa fa-trash"></i>
+    </div>`;
+    card.innerHTML = html;
+    card.style.display = 'block';
+    flashcardContainer.appendChild(card);
+  });
+}
+
+// display a flashcard for every card object in the array
+function displayFlashcard() {
+  if (flashcardArray.length === 0) return;
+
+  noFlashcardMsg.style.display = 'none';
+  flashcardContainer.innerHTML = '';
+  appendFlashcard();
 }
 
 // FOR NOW, LET'S DISABLE THE DELETE BTNS
