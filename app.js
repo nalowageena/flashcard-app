@@ -1,7 +1,6 @@
 // DOM Element Selectors
 const welcomeAlert = document.querySelector(".welcome");
 const closeWelcome = document.querySelector(".fa-close");
-const deleteBtns = document.querySelectorAll(".fa-trash");
 const flashcards = document.querySelectorAll(".flashcard");
 const addFlashcardsBtn = document.querySelector("#add-flashcard-btn");
 const cardCreationModal = document.querySelector("#card-creation-modal");
@@ -81,6 +80,17 @@ function validateForm(cardData) {
   return true;
 }
 
+// Function to reset all form styling when the inputs are being focused on
+function focusTextarea() {
+  textareas.forEach(textarea => {
+    textarea.style.border = 'solid 3px #808080';
+  });
+
+  formErrorMsgs.forEach(formErrorMsg => {
+    formErrorMsg.style.visibility = 'hidden';
+  });
+}
+
 // add card data to flashcard array then close the modal
 function saveCard(cardData) {
   if (validateForm(cardData)) {
@@ -122,25 +132,24 @@ function displayFlashcard() {
   noFlashcardMsg.style.display = 'none';
   flashcardContainer.innerHTML = '';
   appendFlashcard();
+  deleteCard();
 }
 
-function focusTextarea() {
-  textareas.forEach(textarea => {
-    textarea.style.border = 'solid 3px #808080';
-  });
+// Function to delete card
+function deleteCard() {
+  const deleteBtns = document.querySelectorAll('.fa-trash');
 
-  formErrorMsgs.forEach(formErrorMsg => {
-    formErrorMsg.style.visibility = 'hidden';
+  [...deleteBtns].forEach(deleteBtn => {
+    deleteBtn.addEventListener('click', () => {
+      const flashCardIndex = [...flashcardContainer.children].indexOf(deleteBtn.parentElement.parentElement);
+      
+      flashcardArray.splice(flashCardIndex, 1);
+      const flashCard = deleteBtn.parentElement.parentElement.remove();
+      console.log(flashcardArray);
+      noFlashcardMsg.style.display = 'block';
+    });
   });
 }
-
-// FOR NOW, LET'S DISABLE THE DELETE BTNS
-// Array.from(deleteBtns).forEach(btn =>{
-//     btn.addEventListener('click', ()=>{
-//         let card = btn.parentElement.parentElement;
-//         setTimeout(() => {  card.style.display = 'none'; }, 400);
-//     })
-// });
 
 // flashcard constructor and prototype
 let FLashcard = function (question, answer) {
