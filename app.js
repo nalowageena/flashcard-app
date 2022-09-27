@@ -10,6 +10,8 @@ const modalCloseBtn = document.querySelector("#modal-close-btn");
 const cardForm = document.forms[0];
 const flashcardContainer = document.querySelector("#contain-flashcards");
 const noFlashcardMsg = document.querySelector("#contain-flashcards > p");
+const textareas = document.querySelectorAll('textarea');
+const formErrorMsgs = document.querySelectorAll('.form-section small');
 
 const flashcardArray = [];
 
@@ -22,6 +24,9 @@ cardCreationForm.addEventListener("click", (e) => {
 });
 modalCloseBtn.addEventListener("click", closeCardCreationModal);
 cardForm.addEventListener("submit", submitData);
+textareas.forEach(textarea => {
+  textarea.addEventListener("focus", focusTextarea);
+});
 
 // Function to remove welcome alert when its close button is clicked
 function removeWelcomeAlert() {
@@ -34,6 +39,8 @@ function removeWelcomeAlert() {
 // Function to show card creation modal
 function showCardCreationModal() {
   cardCreationModal.style.display = "flex";
+  cardForm.reset();
+  focusTextarea();
 }
 
 // Function to hide card creation modal
@@ -52,8 +59,23 @@ function submitData(event) {
 
 // if any input field is left empty displays an error
 function validateForm(cardData) {
+  const formQuestion = document.querySelector('textarea#question');
+  const formAnswer = document.querySelector('textarea#answer');
+  const quesErrorMsg = document.querySelector('#ques-error-msg');
+  const ansErrorMsg = document.querySelector('#ans-error-msg');
+
   if (cardData.question == "" || cardData.answer == "") {
     console.log("Error, invalid input");
+
+    if (cardData.question == "") {
+      formQuestion.style.border = 'solid 3px red';
+      quesErrorMsg.style.visibility = 'visible';
+    }
+    if (cardData.answer == "") {
+      formAnswer.style.border = 'solid 3px red';
+      ansErrorMsg.style.visibility = 'visible';
+    }
+
     return false;
   }
   return true;
@@ -61,10 +83,12 @@ function validateForm(cardData) {
 
 // add card data to flashcard array then close the modal
 function saveCard(cardData) {
-  if (validateForm(cardData)) flashcardArray.push(cardData);
-  console.log(flashcardArray);
-  closeCardCreationModal()
-  displayFlashcard();
+  if (validateForm(cardData)) {
+    flashcardArray.push(cardData);
+    console.log(flashcardArray);
+    closeCardCreationModal()
+    displayFlashcard();
+  }
 }
 
 // append flashcard to flashcard container
@@ -98,6 +122,16 @@ function displayFlashcard() {
   noFlashcardMsg.style.display = 'none';
   flashcardContainer.innerHTML = '';
   appendFlashcard();
+}
+
+function focusTextarea() {
+  textareas.forEach(textarea => {
+    textarea.style.border = 'solid 3px #808080';
+  });
+
+  formErrorMsgs.forEach(formErrorMsg => {
+    formErrorMsg.style.visibility = 'hidden';
+  });
 }
 
 // FOR NOW, LET'S DISABLE THE DELETE BTNS
