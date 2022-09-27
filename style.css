@@ -257,7 +257,7 @@ main {
 #card-creation-form form {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 .form-section {
@@ -271,7 +271,7 @@ main {
 }
 
 .form-section textarea {
-  border: solid 2px var(--grey-color);
+  border: solid 3px var(--grey-color);
   font-family: 'Poppins', sans-serif;
   background-color: var(--mid-color);
   padding: 2px 5px;
@@ -288,6 +288,11 @@ main {
 
 .form-section textarea#answer {
   height: 10rem;
+}
+
+.form-section small {
+  visibility: hidden;
+  color: red;
 }
 
 #card-creation-form form #form-button {
