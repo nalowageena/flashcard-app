@@ -14,12 +14,12 @@ const formErrorMsgs = document.querySelectorAll('.form-section small');
 
 let flashcardArray;
 
-if (getLocalArray().length == 0){
-  flashcardArray = [];
-}
-else{
+if (getLocalArray() !== null){
   flashcardArray = getLocalArray();
   loadFlashcards(flashcardArray);
+}
+else{
+  flashcardArray = [];
 }
 
 // Event Listeners
