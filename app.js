@@ -12,7 +12,15 @@ const noFlashcardMsg = document.querySelector("#contain-flashcards > p");
 const textareas = document.querySelectorAll('textarea');
 const formErrorMsgs = document.querySelectorAll('.form-section small');
 
-const flashcardArray = [];
+let flashcardArray;
+
+if (getLocalArray().length == 0){
+  flashcardArray = [];
+}
+else{
+  flashcardArray = getLocalArray();
+  loadFlashcards(flashcardArray);
+}
 
 // Event Listeners
 closeWelcome.addEventListener("click", removeWelcomeAlert);
@@ -95,6 +103,7 @@ function focusTextarea() {
 function saveCard(cardData) {
   if (validateForm(cardData)) {
     flashcardArray.push(cardData);
+    updateLocalStore(flashcardArray);
     console.log(flashcardArray);
     closeCardCreationModal()
     displayFlashcard();
@@ -144,7 +153,8 @@ function deleteCard() {
       const flashCardIndex = [...flashcardContainer.children].indexOf(deleteBtn.parentElement.parentElement);
       
       flashcardArray.splice(flashCardIndex, 1);
-      const flashCard = deleteBtn.parentElement.parentElement.remove();
+      updateLocalStore(flashcardArray);
+      deleteBtn.parentElement.parentElement.remove();
       console.log(flashcardArray);
 
       if (flashcardArray.length === 0) {
@@ -152,6 +162,20 @@ function deleteCard() {
       }
     });
   });
+}
+
+function updateLocalStore(flashcardArray) {
+  localStorage.setItem('flashcardArray', JSON.stringify(flashcardArray));
+}
+
+function getLocalArray() {
+  return JSON.parse(localStorage.getItem('flashcardArray'))
+}
+
+function loadFlashcards(flashcardArray) {
+  flashcardArray.forEach((flashcard) => {
+    displayFlashcard()
+  })
 }
 
 // flashcard constructor and prototype
