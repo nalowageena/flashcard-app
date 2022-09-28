@@ -146,7 +146,10 @@ function deleteCard() {
       flashcardArray.splice(flashCardIndex, 1);
       const flashCard = deleteBtn.parentElement.parentElement.remove();
       console.log(flashcardArray);
-      noFlashcardMsg.style.display = 'block';
+
+      if (flashcardArray.length === 0) {
+        flashcardContainer.innerHTML = '<p>No flashcards here...</p>';
+      }
     });
   });
 }
