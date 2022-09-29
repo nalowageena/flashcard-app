@@ -36,27 +36,54 @@
       </div>
     </section>
 
-    <!-- card creation modal -->
-    <section id="card-creation-modal">
-      <div id="card-creation-form">
-        <i id="modal-close-btn" class="fa fa-close"></i>
+    <!-- create card modal -->
+    <section id="create-card-modal">
+      <div id="create-card-form">
+        <i id="create-modal-close-btn" class="fa fa-close"></i>
         <h2>Create Flashcard</h2>
         <form>
-          <div class="form-section">
+          <div class="create-form-section">
             <label for="question">Question</label>
-            <textarea name="question" id="question" cols="30" rows="10" placeholder="Enter the question..."></textarea>
-            <small id="ques-error-msg">Question cannot be empty!</small>
+            <textarea class="create-card-textarea" name="question" id="create-card-question" cols="30" rows="10" placeholder="Enter the question..."></textarea>
+            <small id="create-ques-error-msg">Question cannot be empty!</small>
           </div>
-          <div class="form-section">
+          <div class="create-form-section">
             <label for="answer">Answer</label>
-            <textarea name="answer" id="answer" cols="30" rows="10" placeholder="Enter the answer..."></textarea>
-            <small  id="ans-error-msg">Answer cannot be empty!</small>
+            <textarea class="create-card-textarea" name="answer" id="create-card-answer" cols="30" rows="10" placeholder="Enter the answer..."></textarea>
+            <small  id="create-ans-error-msg">Answer cannot be empty!</small>
           </div>
 
-          <!-- form button -->
+          <!-- create form button -->
           <div>
-            <button id="form-button" class="button" type="submit">
+            <button id="create-form-button" class="button" type="submit">
               Add Flashcard
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- create card modal -->
+    <section id="edit-card-modal">
+      <div id="edit-card-form">
+        <i id="edit-modal-close-btn" class="fa fa-close"></i>
+        <h2>Edit Flashcard</h2>
+        <form>
+          <div class="edit-form-section">
+            <label for="question">Question</label>
+            <textarea class="edit-card-textarea" name="question" id="edit-card-question" cols="30" rows="10" placeholder="Enter the question..."></textarea>
+            <small id="edit-ques-error-msg">Question cannot be empty!</small>
+          </div>
+          <div class="edit-form-section">
+            <label for="answer">Answer</label>
+            <textarea class="edit-card-textarea" name="answer" id="edit-card-answer" cols="30" rows="10" placeholder="Enter the answer..."></textarea>
+            <small  id="edit-ans-error-msg">Answer cannot be empty!</small>
+          </div>
+
+          <!-- edit form button -->
+          <div>
+            <button id="edit-form-button" class="button" type="submit">
+              Edit
             </button>
           </div>
         </form>
