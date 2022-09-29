@@ -183,8 +183,14 @@ main {
 }
 
 .card-content {
+  font-size: auto;
   text-align: center;
   padding: .3rem;
+  transition: font-size 0.2s;
+}
+
+.toggleAnswer {
+  font-size: 0;
 }
 
 .actions {
