@@ -122,7 +122,7 @@ function appendFlashcard() {
     </div>
     <div class="card-face">
       <button class="tag button">Answer <i class="fa fa-chevron-down"></i></button>
-      <p class="card-content">${flashcard.answer}</p>
+      <p class="card-content toggleAnswer">${flashcard.answer}</p>
     </div>
     <div class="actions">
       <i class="fa fa-edit"></i>
@@ -142,6 +142,7 @@ function displayFlashcard() {
   flashcardContainer.innerHTML = '';
   appendFlashcard();
   deleteCard();
+  toggleAnswer()
 }
 
 // Function to delete card
@@ -176,6 +177,18 @@ function loadFlashcards(flashcardArray) {
   flashcardArray.forEach((flashcard) => {
     displayFlashcard()
   })
+}
+
+function toggleAnswer() {
+  const toggleBtns = document.querySelectorAll('.tag.button');
+  console.log(toggleBtns);
+  [...toggleBtns].forEach(toggleBtn => {
+    toggleBtn.addEventListener('click', () => {
+      toggleBtn.querySelector('.fa').classList.toggle('fa-chevron-up');
+      toggleBtn.querySelector('.fa').classList.toggle('fa-chevron-down');
+      toggleBtn.closest('div').querySelector('p').classList.toggle('toggleAnswer');
+    });
+  });
 }
 
 // flashcard constructor and prototype
