@@ -9,7 +9,8 @@ const createModalCloseBtn = document.querySelector("#create-modal-close-btn");
 const editCardModal = document.querySelector("#edit-card-modal");
 const editCardForm = document.querySelector("#edit-card-form");
 const editModalCloseBtn = document.querySelector("#edit-modal-close-btn");
-const cardForm = document.forms[0];
+const createForm = document.forms[0];
+const editForm = document.forms[1];
 const flashcardContainer = document.querySelector("#contain-flashcards");
 const noFlashcardMsg = document.querySelector("#contain-flashcards > p");
 const createCardTextareas = document.querySelectorAll('.create-card-textarea');
@@ -40,7 +41,7 @@ editCardForm.addEventListener("click", (e) => {
 });
 createModalCloseBtn.addEventListener("click", closeCreateCardModal);
 editModalCloseBtn.addEventListener("click", closeEditCardModal);
-cardForm.addEventListener("submit", submitData);
+createForm.addEventListener("submit", submitData);
 createCardTextareas.forEach(createCardTextarea => {
   createCardTextarea.addEventListener("focus", focusTextarea);
 });
@@ -59,7 +60,14 @@ function removeWelcomeAlert() {
 // Function to show create card modal
 function showCreateCardModal() {
   createCardModal.style.display = "flex";
-  cardForm.reset();
+  createForm.reset();
+  focusTextarea();
+}
+
+// Function to show edit card modal
+function showEditCardModal() {
+  editCardModal.style.display = "flex";
+  editForm.reset();
   focusTextarea();
 }
 
@@ -168,6 +176,7 @@ function displayFlashcard() {
   flashcardContainer.innerHTML = '';
   appendFlashcard();
   deleteCard();
+  editCard();
   toggleAnswer()
 }
 
@@ -191,6 +200,40 @@ function deleteCard() {
   });
 }
 
+// Function to edit card
+function editCard() {
+  const editBtns = document.querySelectorAll('.fa-edit');
+
+  [...editBtns].forEach(editBtn => {
+    editBtn.addEventListener('click', () => {
+      const card = editBtn.parentElement.parentElement;
+      const cardIndex = [...flashcardContainer.children].indexOf(card);
+
+      showEditCardModal();
+      const editFormQues = document.querySelector('textarea#edit-card-question');
+      const editFormAns = document.querySelector('textarea#edit-card-answer');
+      const editFormBtn = document.querySelector('#edit-form-button');
+
+      editFormQues.value = flashcardArray[cardIndex].question;
+      editFormAns.value = flashcardArray[cardIndex].answer;
+
+      editFormBtn.addEventListener('click', event => {
+        event.preventDefault();
+        flashcardArray[cardIndex].question = editFormQues.value;
+        flashcardArray[cardIndex].answer = editFormAns.value;
+
+        console.log(flashcardArray);
+
+        [...[...card.children][0].children][1].textContent = editFormQues.value;
+        [...[...card.children][1].children][1].textContent = editFormAns.value;
+        // updateLocalStore(flashcardArray);
+        closeEditCardModal();
+        // console.log(flashcardArray);
+      });
+    });
+  });
+}
+
 function updateLocalStore(flashcardArray) {
   localStorage.setItem('flashcardArray', JSON.stringify(flashcardArray));
 }
@@ -207,7 +250,7 @@ function loadFlashcards(flashcardArray) {
 
 function toggleAnswer() {
   const toggleBtns = document.querySelectorAll('.tag.button');
-  console.log(toggleBtns);
+  // console.log(toggleBtns);
   [...toggleBtns].forEach(toggleBtn => {
     toggleBtn.addEventListener('click', () => {
       toggleBtn.querySelector('.fa').classList.toggle('fa-chevron-up');
