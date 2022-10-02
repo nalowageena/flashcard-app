@@ -114,6 +114,28 @@ function validateCreateCardForm(cardData) {
   return true;
 }
 
+function validateEditCardForm(editFormQues, editFormAns) {
+  const editFormQuestion = document.querySelector('textarea#edit-card-question');
+  const editFormAnswer = document.querySelector('textarea#edit-card-answer');
+  const editQuesErrorMsg = document.querySelector('#edit-ques-error-msg');
+  const editAnsErrorMsg = document.querySelector('#edit-ans-error-msg');
+
+  if (editFormQues.value === '' || editFormAns.value === '') {
+    if (editFormQues.value === '') {
+      editFormQuestion.style.border = 'solid 3px red';
+      editQuesErrorMsg.style.visibility = 'visible';
+    }
+  
+    if (editFormAns.value === '') {
+      editFormAnswer.style.border = 'solid 3px red';
+      editAnsErrorMsg.style.visibility = 'visible';
+    }
+
+    return false;
+  }
+  return true;
+}
+
 // Function to reset all form styling when the inputs are being focused on
 function focusTextarea() {
   createCardTextareas.forEach(textarea => {
@@ -217,19 +239,20 @@ function editCard() {
       editFormQues.value = flashcardArray[cardIndex].question;
       editFormAns.value = flashcardArray[cardIndex].answer;
 
-      editFormBtn.addEventListener('click', event => {
+      editFormBtn.onclick = event => {
         event.preventDefault();
-        flashcardArray[cardIndex].question = editFormQues.value;
-        flashcardArray[cardIndex].answer = editFormAns.value;
-
-        console.log(flashcardArray);
-
-        [...[...card.children][0].children][1].textContent = editFormQues.value;
-        [...[...card.children][1].children][1].textContent = editFormAns.value;
-        // updateLocalStore(flashcardArray);
-        closeEditCardModal();
-        // console.log(flashcardArray);
-      });
+        if (validateEditCardForm(editFormQues, editFormAns)) {
+          flashcardArray[cardIndex].question = editFormQues.value;
+          flashcardArray[cardIndex].answer = editFormAns.value;
+  
+          console.log(flashcardArray);
+  
+          [...[...card.children][0].children][1].textContent = editFormQues.value;
+          [...[...card.children][1].children][1].textContent = editFormAns.value;
+          updateLocalStore(flashcardArray);
+          closeEditCardModal();
+        }
+      };
     });
   });
 }
