@@ -20,6 +20,7 @@ font-family: 'Roboto Mono', monospace; */
 
   /* card shadow */
   --card-shadow : rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  --header-shadow : rgba(0, 0, 0, 0.3) 0px 5px 25px;
 }
 
 * {
@@ -29,40 +30,40 @@ font-family: 'Roboto Mono', monospace; */
 }
 
 body {
-  display: grid;
-  grid-template-areas: "header", "main";
-  grid-template-rows: 5rem calc(100vh - 5rem);
-  gap: 1rem;
   background-color: var(--mid-color);
-  padding: 0 1.5rem;
 }
 
 /* HEADER */
 header {
-  padding: 1rem;
+  height: 6rem;
+  padding: 1rem 2.5rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  background-color: var(--dark-color);
+  box-shadow: var(--header-shadow);
 }
 
 #logo {
-  fill: var(--dark-color);
-  width: 4.5rem;
+  fill: var(--brand-color);
+  width: 5rem;
 }
 
 #logo-title {
   font-family: 'Roboto Mono', monospace;
-  color: var(--dark-color);
-  font-size: 3.2rem;
+  color: var(--brand-color);
+  font-size: 4rem;
   font-weight: 600;
 }
 
 /* MAIN */
 main {
   min-width: 100%;
-  padding: 0 6rem;
+  padding: 1rem 7.5rem;
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  height: calc(100vh - 6rem);
 }
 
 /* Welcome Section */
