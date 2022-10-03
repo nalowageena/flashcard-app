@@ -69,7 +69,7 @@ main {
 /* Welcome Section */
 .welcome {
   position: relative;
-  padding: 1rem;
+  padding: 3rem 1rem;
   margin-bottom: 1.5rem;
   width: 100%;
   background-color: var(--brand-color);
@@ -97,7 +97,6 @@ main {
 
 .welcome p {
   text-align: center;
-  padding: 2.5rem 0;
   font-size: larger;
 }
 
